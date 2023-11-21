@@ -4,6 +4,7 @@
 
 /* подключаем стили блоков */
 @import url(../blocks/body/body.css);
+@import url(../blocks/profile/profile.css);
 @import url(../blocks/list/list.css);
 @import url(../blocks/link/link.css);
 @import url(../blocks/header/header.css);
@@ -12,6 +13,13 @@
 
 /* подключаем стили элементов */
 @import url(../blocks/header/__logo/header__logo.css);
+@import url(../blocks/profile/__avatar/profile__avatar.css);
+@import url(../blocks/profile/__info/profile__info.css);
+@import url(../blocks/profile/__text/profile__text.css);
+@import url(../blocks/profile/__name/profile__name.css);
+@import url(../blocks/profile/__edit/profile__edit.css);
+@import url(../blocks/profile/__bio/profile__bio.css);
+@import url(../blocks/profile/__add/profile__add.css);
 @import url(../blocks/footer/__links/footer__links.css);
 @import url(../blocks/footer/__link/footer__link.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
