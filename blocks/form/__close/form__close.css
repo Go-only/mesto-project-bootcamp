@@ -1,0 +1,23 @@
+.form__close {
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 32px;
+  height: 32px;
+  background-image: url(../../../images/close.svg);
+  cursor: pointer;
+  background-color: #000;
+  border: none;
+}
+
+@media screen and (max-width: 640px) {
+
+  .form__close {
+    width: 20px;
+    height: 20px;
+    background-size: cover;
+    top: -36px;
+    right: 0;
+  }
+
+}
