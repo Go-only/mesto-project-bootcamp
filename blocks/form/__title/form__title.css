@@ -5,10 +5,6 @@
   margin: 0 0 48px;
 }
 
-.form__item:focus {
-  outline-color: transparent;
-}
-
 @media screen and (max-width: 640px) {
 
   .form__title {
