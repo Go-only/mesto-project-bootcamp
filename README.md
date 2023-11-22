@@ -7,7 +7,7 @@
 
 **Ссылка на проект**
 
-[Путешествие по России]([https://go-only.github.io/russian-travel-bootcamp/](https://go-only.github.io/mesto-project-bootcamp/))
+[Mesto]((https://go-only.github.io/mesto-project-bootcamp/))
 
 **Особенности проекта**
 
