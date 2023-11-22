@@ -4,3 +4,14 @@
   align-items: center;
   column-gap: 30px;
 }
+
+@media screen and (max-width: 640px) {
+
+  .profile__info {
+    grid-template-columns: 1fr;
+    row-gap: 26px;
+    justify-items: center;
+    margin-bottom: 33px;
+  }
+
+}
