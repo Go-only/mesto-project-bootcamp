@@ -7,7 +7,7 @@
 
 **Ссылка на проект**
 
-[Mesto]((https://go-only.github.io/mesto-project-bootcamp/))
+[Mesto](https://go-only.github.io/mesto-project-bootcamp/)
 
 **Особенности проекта**
 
