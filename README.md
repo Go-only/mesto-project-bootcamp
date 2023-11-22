@@ -1,4 +1,4 @@
-# Project: Место
+# Project: Mesto
 
 ## Technologies
 * Building grids using display: flex
