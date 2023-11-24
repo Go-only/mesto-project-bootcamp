@@ -2,12 +2,15 @@
   width: 22px;
   height: 19px;
   background-image: url('../../../images/heart.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
   background-color: transparent;
   cursor: pointer;
   border: none;
-  outline: none;
+  transition: 0.3s;
 }
 
 .card__heart:hover {
-  opacity: 0.6;
+  opacity: 0.5;
 }

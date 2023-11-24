@@ -5,9 +5,13 @@
   width: 32px;
   height: 32px;
   background-image: url(../../../images/close.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
   cursor: pointer;
   background-color: transparent;
   border: none;
+  transition: 0.3s;
 }
 
 .popup__close:hover {
@@ -19,7 +23,6 @@
   .popup__close {
     width: 20px;
     height: 20px;
-    background-size: cover;
     top: -36px;
     right: 0;
   }
