@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Тайтл</title>
+  <title>Mesto</title>
   <link rel="stylesheet" type="text/css" href="pages/index.css">
 </head>
 
@@ -13,7 +13,7 @@
 
     <header class="header">
 
-      <img src="images/logo.svg" alt="логотип" class="header__logo">
+      <img src="images/logo.svg" alt="логотип места России" class="logo">
 
     </header>
 
@@ -25,87 +25,96 @@
           <img src="images/avatar.jpg" alt="Аватар" class="profile__avatar">
           <div class="profile__text">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
-            <button class="profile__edit link"></button>
+            <button class="profile__edit" type="button" aria-label="Кнопка редактирования профиля"></button>
             <p class="profile__bio">Исследователь океана</p>
           </div>
         </div>
-        <button class="profile__add link"></button>
+        <button class="profile__add" type="button" aria-label="Кнопка добавления нового места"></button>
 
       </section>
 
-      <section class="cards">
+      <section class="cards" aria-label="Места России">
 
-        <article class="card">
+        <ul class="cards__list">
+          <li>
+            <article class="card">
 
-          <img src="images/karachaevsk.jpg" alt="Место" class="card__img">
-          <div class="card__content">
+              <img src="images/karachaevsk.jpg" alt="Место" class="card__img">
+              <div class="card__content">
 
-            <p class="card__name">Карачаевск</p>
-            <span class="card__heart link card__heart_active"></span>
+                <h2 class="card__name">Карачаевск</h2>
+                <button type="button" class="card__heart"></button>
 
-          </div>
+              </div>
 
-        </article>
+            </article>
+          </li>
+          <li>
+            <article class="card">
 
-        <article class="card">
+              <img src="images/elbrus.jpg" alt="Место" class="card__img">
+              <div class="card__content">
 
-          <img src="images/elbrus.jpg" alt="Место" class="card__img">
-          <div class="card__content">
+                <h2 class="card__name">Гора Эльбрус</h2>
+                <button type="button" class="card__heart"></button>
 
-            <p class="card__name">Гора Эльбрус</p>
-            <span class="card__heart link"></span>
+              </div>
 
-          </div>
+            </article>
+          </li>
+          <li>
+            <article class="card">
 
-        </article>
+              <img src="images/dombai.jpg" alt="Место" class="card__img">
+              <div class="card__content">
 
-        <article class="card">
+                <h2 class="card__name">Домбай</h2>
+                <button type="button" class="card__heart"></button>
 
-          <img src="images/dombai.jpg" alt="Место" class="card__img">
-          <div class="card__content">
+              </div>
 
-            <p class="card__name">Домбай</p>
-            <span class="card__heart link"></span>
+            </article>
+          </li>
+          <li>
+            <article class="card">
 
-          </div>
+              <img src="images/elbrus-two.jpg" alt="Место" class="card__img">
+              <div class="card__content">
 
-        </article>
+                <h2 class="card__name">Гора Эльбрус</h2>
+                <button type="button" class="card__heart"></button>
 
-        <article class="card">
+              </div>
 
-          <img src="images/elbrus-two.jpg" alt="Место" class="card__img">
-          <div class="card__content">
+            </article>
+          </li>
+          <li>
+            <article class="card">
 
-            <p class="card__name">Гора Эльбрус</p>
-            <span class="card__heart link"></span>
+              <img src="images/dombai-two.jpg" alt="Место" class="card__img">
+              <div class="card__content">
 
-          </div>
+                <h2 class="card__name">Домбай</h2>
+                <button type="button" class="card__heart"></button>
 
-        </article>
+              </div>
 
-        <article class="card">
+            </article>
+          </li>
+          <li>
+            <article class="card">
 
-          <img src="images/dombai-two.jpg" alt="Место" class="card__img">
-          <div class="card__content">
+              <img src="images/kchr.jpg" alt="Место" class="card__img">
+              <div class="card__content">
 
-            <p class="card__name">Домбай</p>
-            <span class="card__heart link"></span>
+                <h2 class="card__name">Карачаево-Черкессия</h2>
+                <button type="button" class="card__heart"></button>
 
-          </div>
+              </div>
 
-        </article>
-
-        <article class="card">
-
-          <img src="images/kchr.jpg" alt="Место" class="card__img">
-          <div class="card__content">
-
-            <p class="card__name">Карачаево-Черкессия</p>
-            <span class="card__heart link"></span>
-
-          </div>
-
-        </article>
+            </article>
+          </li>
+        </ul>
 
       </section>
 
@@ -120,15 +129,18 @@
   </div>
 
   <div class="popup">
-    <div class="popup__content">
-      <form class="form">
+    <div class="popup__container">
+      <form class="form" name="formProfile">
         <p class="form__title">Редактировать профиль</p>
-        <input class="form__item" type="text" value="Жак-Ив Кусто" id="name" name="name" placeholder="Имя" required>
-        <input class="form__item form__item_el_bio" type="text" value="Исследователь океана" id="bio" name="bio"
-          placeholder="Био" required>
-        <button class="form__button" type="submit">Сохранить</button>
+        <input class="form__item form__item_input_name" type="text" value="Жак-Ив Кусто" name="name"
+          placeholder="Имя профиля" required>
+        <input class="form__item form__item_input_bio" type="text" value="Исследователь океана" name="bio"
+          placeholder="Описание профиля" required>
+        <button class="form__button" type="button"
+          aria-label="Кнопка сохранения новых данных в профиле">Сохранить</button>
       </form>
-      <button class="form__close link" type="button"></button>
+      <button class="popup__close" type="button"
+        aria-label="Кнопка закрытия всплывающей формы редактирования профиля"></button>
     </div>
   </div>
 
