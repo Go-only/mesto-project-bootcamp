@@ -1,11 +1,13 @@
 .profile__add {
   width: 150px;
   height: 50px;
-  background-color: #000;
+  background-color: transparent;
   background-image: url(../../../images/add.svg);
   background-repeat: no-repeat;
-  background-position: 50% 50%;
+  background-size: 22px;
+  background-position: center;
   border: 2px solid #fff;
+  border-radius: 2px;
   cursor: pointer;
   transition: 0.3s;
 }
@@ -14,10 +16,20 @@
   opacity: 0.6;
 }
 
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 960px) {
 
   .profile__add {
     width: 282px;
+    margin-top: 20px;
+  }
+
+}
+
+@media screen and (max-width: 640px) {
+
+  .profile__add {
+    background-size: 16px;
+    margin-top: 0;
   }
 
 }
