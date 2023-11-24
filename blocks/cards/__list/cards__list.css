@@ -21,6 +21,7 @@
 
   .cards__list {
     grid-template-columns: 1fr;
+    margin: 0 auto 48px;
   }
 
 }

@@ -1,18 +1,18 @@
 .form__button {
   font-size: 18px;
   font-weight: 400;
-  line-height: 21.78px;
+  line-height: normal;
   text-align: center;
-  color: white;
+  color: #fff;
   border: none;
-  outline: none;
-  background-color: black;
+  background-color: #000;
   border-radius: 2px;
   cursor: pointer;
   height: 50px;
   width: 358px;
   padding: 0;
   margin: 0;
+  transition: 0.3s;
 }
 
 .form__button:hover {
@@ -24,6 +24,7 @@
   .form__button {
     height: 46px;
     width: 238px;
+    font-size: 14px;
   }
 
 }

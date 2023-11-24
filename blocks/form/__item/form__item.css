@@ -1,16 +1,15 @@
 .form__item {
+  font-family: 'Inter', Arial, sans-serif;
+  color: #000;
   font-size: 14px;
   font-weight: 400;
-  border: 0;
+  line-height: normal;
+  border: none;
   padding: 0 0 10px;
-  border-bottom: 1px rgba(0, 0, 0, .2) solid;
+  border-bottom: 1px solid rgba(0, 0, 0, .2);
   margin-bottom: 30px;
 }
 
 .form__item:last-child {
   margin-bottom: 48px;
-}
-
-.form__item:focus {
-  outline-color: transparent;
 }
