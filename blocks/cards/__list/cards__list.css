@@ -1,15 +1,17 @@
-.cards {
+.cards__list {
   width: 100%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   justify-items: center;
   gap: 20px 17px;
-  margin-bottom: 67px;
+  margin: 0 auto 67px;
+  list-style: none;
+  padding: 0;
 }
 
 @media screen and (max-width: 960px) {
 
-  .cards {
+  .cards__list {
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -17,7 +19,7 @@
 
 @media screen and (max-width: 640px) {
 
-  .cards {
+  .cards__list {
     grid-template-columns: 1fr;
   }
 

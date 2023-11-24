@@ -7,3 +7,7 @@
   border: none;
   outline: none;
 }
+
+.card__heart:hover {
+  opacity: 0.6;
+}
