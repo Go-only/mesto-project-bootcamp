@@ -1,14 +1,20 @@
 .profile__bio {
+  max-width: 336px;
   color: #FFF;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
+  line-height: normal;
   margin: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 @media screen and (max-width: 640px) {
 
   .profile__bio {
+    max-width: 282px;
     font-size: 14px;
   }
 
