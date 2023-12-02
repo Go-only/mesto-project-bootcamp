@@ -35,86 +35,7 @@
 
       <section class="cards" aria-label="Места России">
 
-        <ul class="cards__list">
-          <li>
-            <article class="card">
-
-              <img src="images/karachaevsk.jpg" alt="Место" class="card__img">
-              <div class="card__content">
-
-                <h2 class="card__name">Карачаевск</h2>
-                <button type="button" class="card__heart"></button>
-
-              </div>
-
-            </article>
-          </li>
-          <li>
-            <article class="card">
-
-              <img src="images/elbrus.jpg" alt="Место" class="card__img">
-              <div class="card__content">
-
-                <h2 class="card__name">Гора Эльбрус</h2>
-                <button type="button" class="card__heart"></button>
-
-              </div>
-
-            </article>
-          </li>
-          <li>
-            <article class="card">
-
-              <img src="images/dombai.jpg" alt="Место" class="card__img">
-              <div class="card__content">
-
-                <h2 class="card__name">Домбай</h2>
-                <button type="button" class="card__heart"></button>
-
-              </div>
-
-            </article>
-          </li>
-          <li>
-            <article class="card">
-
-              <img src="images/elbrus-two.jpg" alt="Место" class="card__img">
-              <div class="card__content">
-
-                <h2 class="card__name">Гора Эльбрус</h2>
-                <button type="button" class="card__heart"></button>
-
-              </div>
-
-            </article>
-          </li>
-          <li>
-            <article class="card">
-
-              <img src="images/dombai-two.jpg" alt="Место" class="card__img">
-              <div class="card__content">
-
-                <h2 class="card__name">Домбай</h2>
-                <button type="button" class="card__heart"></button>
-
-              </div>
-
-            </article>
-          </li>
-          <li>
-            <article class="card">
-
-              <img src="images/kchr.jpg" alt="Место" class="card__img">
-              <div class="card__content">
-
-                <h2 class="card__name">Карачаево-Черкессия</h2>
-                <button type="button" class="card__heart"></button>
-
-              </div>
-
-            </article>
-          </li>
-        </ul>
+        <ul class="cards__list"></ul>
 
       </section>
 
@@ -136,7 +57,7 @@
           placeholder="Имя профиля" required>
         <input class="form__item form__item_input_bio" type="text" value="Исследователь океана" name="bio"
           placeholder="Описание профиля" required>
-        <button class="form__button" type="button"
+        <button class="form__button" type="submit"
           aria-label="Кнопка сохранения новых данных в профиле">Сохранить</button>
       </form>
       <button class="popup__close" type="button"
@@ -152,7 +73,7 @@
           required>
         <input class="form__item form__item_input_link" type="text" value="" name="link"
           placeholder="Ссылка на картинку" required>
-        <button class="form__button" type="button"
+        <button class="form__button" type="submit"
           aria-label="Кнопка сохранения новой карточки с фотографией и ссылкой нового места России">Сохранить</button>
       </form>
       <button class="popup__close" type="button"
@@ -161,17 +82,19 @@
   </div>
 
   <template class="card-template">
-    <article class="card">
+    <li class="template-element">
+      <article class="card">
 
-      <img src="" alt="Место" class="card__img">
-      <div class="card__content">
+        <img src="" alt="Место" class="card__img">
+        <button type="button" class="card__trash"></button>
+        <div class="card__content">
 
-        <h2 class="card__name"></h2>
-        <button type="button" class="card__heart"></button>
+          <h2 class="card__name"></h2>
+          <button type="button" class="card__heart"></button>
 
-      </div>
-
-    </article>
+        </div>
+      </article>
+    </li>
   </template>
   <script src="scripts/script.js"></script>
 </body>
