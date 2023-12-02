@@ -32,8 +32,10 @@ const buttonProfileEdit = document.querySelector(".profile__edit");
 const buttonCardAdd = document.querySelector(".profile__add");
 const popupTypeEdit = document.querySelector(".popup_type_edit");
 const popupTypeAdd = document.querySelector(".popup_type_add");
+const popupTypeImg = document.querySelector(".popup_type_img");
 const ProfileName = document.querySelector(".profile__name");
 const ProfileBio = document.querySelector(".profile__bio");
+const bigImg = document.querySelector(".popup__big-img");
 
 const formFormProfile = document.querySelector("form[name='formProfile']");
 const inputName = formFormProfile.querySelector(".form__item_input_name");
@@ -46,6 +48,7 @@ const inputLink = formFormAdd.querySelector(".form__item_input_link");
 /* Popups */
 
 function openPopup(popup) {
+
   popup.classList.add("popup_opened");
 }
 
@@ -75,7 +78,7 @@ initialCards.forEach(function (dataElement) {
   renderCard(name, link, cardList);
 });
 
-function renderCard(nameElement, linkElement, containerNode, position) {
+function renderCard(nameElement, linkElement, containerNode) {
   const newCard = createCard(nameElement, linkElement);
   containerNode.prepend(newCard);
 }
@@ -92,7 +95,8 @@ function createCard(nameElement, linkElement) {
   cardImg.src = linkElement;
 
   cardImg.addEventListener('click', () => {
-    console.log('img')
+    bigImg.src = linkElement;
+    openPopup(popupTypeImg);
   });
   cardHeart.addEventListener('click', function (e) {
     e.target.classList.toggle('card__heart_active');
@@ -135,6 +139,7 @@ buttonProfileEdit.addEventListener('click', () => openPopup(popupTypeEdit));
 buttonCardAdd.addEventListener('click', () => openPopup(popupTypeAdd));
 popupTypeEdit.addEventListener('click', closePopups);
 popupTypeAdd.addEventListener('click', closePopups);
+popupTypeImg.addEventListener('click', closePopups);
 
 formFormProfile.addEventListener('submit', handleFormProfileSubmit);
 formFormAdd.addEventListener('submit', handleFormAddSubmit);
