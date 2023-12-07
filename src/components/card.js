@@ -1,4 +1,4 @@
-import { bigImg, cardTemplateElement, nameImg, popupTypeImg } from "./constants.js";
+import { bigImg, cardTemplateElement, nameImg, popupTypeImg } from "./utils.js";
 import { openPopup } from "./popup.js";
 
 export function renderCard(nameElement, linkElement, containerNode) {

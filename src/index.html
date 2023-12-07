@@ -5,7 +5,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mesto</title>
-  <link rel="stylesheet" type="text/css" href="pages/index.css">
 </head>
 
 <body class="body">
@@ -13,7 +12,7 @@
 
     <header class="header">
 
-      <img src="images/logo.svg" alt="логотип места России" class="logo">
+      <img src="<%=require('./images/logo.svg')%>" alt="логотип места России" class="logo">
 
     </header>
 
@@ -22,7 +21,7 @@
       <section class="profile">
 
         <div class="profile__info">
-          <img src="images/avatar.jpg" alt="Аватар" class="profile__avatar">
+          <img src="<%=require('./images/avatar.jpg')%>" alt="Аватар" class="profile__avatar">
           <div class="profile__text">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
             <button class="profile__edit" type="button" aria-label="Кнопка редактирования профиля"></button>
@@ -104,7 +103,6 @@
       </article>
     </li>
   </template>
-  <script src="scripts/index.js" type="module"></script>
 </body>
 
 </html>
