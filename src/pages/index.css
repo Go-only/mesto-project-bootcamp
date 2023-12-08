@@ -12,6 +12,7 @@
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/form/form.css);
+@import url(../blocks/error/error.css);
 
 /* подключаем стили элементов */
 @import url(../blocks/profile/__avatar/profile__avatar.css);
@@ -42,3 +43,5 @@
 
 /* подключаем стили модификаторов элементов */
 @import url(../blocks/card/__heart/_active/card__heart_active.css);
+@import url(../blocks/form/__item/_status/form__item_status_invalid);
+@import url(../blocks/form/__button/_invalid/form__button_invalid.css);

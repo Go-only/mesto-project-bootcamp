@@ -4,7 +4,7 @@ import { profileBio, profileName, cardList, inputBio, inputLink, inputMesto, inp
 // Открытие popup
 export function openPopup(popup) {
   popup.classList.add("popup_opened");
-  document.addEventListener('keydown', (e) => closeByEsc(e, popup))
+  document.addEventListener('keydown', (e) => closeByEsc(e, popup));
 };
 
 // Закрытие popup

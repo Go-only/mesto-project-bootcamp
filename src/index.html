@@ -50,12 +50,14 @@
 
   <div class="popup popup_type_edit">
     <div class="popup__container">
-      <form class="form" name="formProfile">
+      <form class="form" name="formProfile" novalidate>
         <p class="form__title">Редактировать профиль</p>
         <input class="form__item form__item_input_name" type="text" value="Жак-Ив Кусто" name="name"
-          placeholder="Имя профиля" required>
+          placeholder="Имя профиля" minlength="2" maxlength="40" required>
+        <span id="name-error" class="error"></span>
         <input class="form__item form__item_input_bio" type="text" value="Исследователь океана" name="bio"
-          placeholder="Описание профиля" required>
+          placeholder="Описание профиля" minlength="2" maxlength="200" required>
+        <span id="bio-error" class="error"></span>
         <button class="form__button" type="submit"
           aria-label="Кнопка сохранения новых данных в профиле">Сохранить</button>
       </form>
@@ -66,12 +68,14 @@
 
   <div class="popup popup_type_add">
     <div class="popup__container">
-      <form class="form" name="formAdd">
+      <form class="form" name="formAdd" novalidate>
         <p class="form__title">Новое место</p>
         <input class="form__item form__item_input_mesto" type="text" value="" name="mesto" placeholder="Название"
+          minlength="2" maxlength="30" required>
+        <span id="mesto-error" class="error"></span>
+        <input class="form__item form__item_input_link" type="url" value="" name="link" placeholder="Ссылка на картинку"
           required>
-        <input class="form__item form__item_input_link" type="text" value="" name="link"
-          placeholder="Ссылка на картинку" required>
+        <span id="link-error" class="error"></span>
         <button class="form__button" type="submit"
           aria-label="Кнопка сохранения новой карточки с фотографией и ссылкой нового места России">Сохранить</button>
       </form>

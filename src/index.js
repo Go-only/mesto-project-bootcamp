@@ -2,12 +2,12 @@ import './pages/index.css';
 import { renderCard } from "./components/card.js";
 import { handleFormAddSubmit, handleFormProfileSubmit, openPopup } from "./components/modal.js";
 import { buttonCardAdd, buttonProfileEdit, cardList, formFormAdd, formFormProfile, initialCards, inputBio, inputName, popupTypeAdd, popupTypeEdit, profileBio, profileName } from './components/utils.js';
+import { configForm, enableValidation } from './components/validate.js';
 
+//Рендеринг карточек из массива
 initialCards.forEach(({ name, link }) => {
   renderCard(name, link, cardList);
 });
-
-
 
 // Обработчики событий
 buttonProfileEdit.addEventListener('click', function () {
@@ -18,3 +18,6 @@ buttonProfileEdit.addEventListener('click', function () {
 buttonCardAdd.addEventListener('click', () => openPopup(popupTypeAdd));
 formFormProfile.addEventListener('submit', handleFormProfileSubmit);
 formFormAdd.addEventListener('submit', handleFormAddSubmit);
+
+//Валидация форм
+enableValidation(configForm);
