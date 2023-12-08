@@ -39,7 +39,6 @@ export function handleFormAddSubmit(e) {
   renderCard(inputMestoValue, inputLinkValue, cardList);
   closePopup(popupTypeAdd);
   e.target.reset();
-  enableValidation(configForm);
 };
 
 //Валидация форм

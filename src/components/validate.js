@@ -21,14 +21,19 @@ function checkInputValidity(inputElement, formElement, config) {
   }
 }
 
+// Функция блокировки кнопки
+function disableButton(buttonElement, config) {
+  buttonElement.classList.add(config.inactiveButtonClass);
+  buttonElement.disabled = "disabled";
+}
+
 // Функция блокировки кнопки в зависимости от валидности инпутов
 function toggleButtonState(buttonElement, isActive, config) {
   if (isActive) {
     buttonElement.disabled = false;
     buttonElement.classList.remove(config.inactiveButtonClass);
   } else {
-    buttonElement.classList.add(config.inactiveButtonClass);
-    buttonElement.disabled = "disabled";
+    disableButton(buttonElement, config);
   }
 }
 
@@ -39,6 +44,10 @@ function setEventListener(formElement, config) {
   );
 
   toggleButtonState(submitButtonElement, formElement.checkValidity(), config);
+
+  formElement.addEventListener('reset', () => {
+    disableButton(submitButtonElement, config);
+  });
 
   // Перебираем список инпутов конткретной формы и вешаем на каждый инпут обработчик события input
   inputList.forEach((inputElement) => {
