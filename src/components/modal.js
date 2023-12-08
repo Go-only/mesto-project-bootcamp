@@ -4,23 +4,23 @@ import { profileBio, profileName, cardList, inputBio, inputLink, inputMesto, inp
 // Открытие popup
 export function openPopup(popup) {
   popup.classList.add("popup_opened");
-  document.addEventListener('keydown', closeByEsc);
+  document.addEventListener('keydown', (e) => closeByEsc(e, popup))
 };
 
+// Закрытие popup
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
-  document.removeEventListener('keydown', closeByEsc);
+  document.removeEventListener('keydown', (e) => closeByEsc(e, popup))
 };
 
-// Закрытие popups по Esc
-function closeByEsc(e) {
+// Закрытие popup по Esc
+function closeByEsc(e, popup) {
   if (e.key === 'Escape') {
-    const newOpenPopup = document.querySelector('.popup_opened');
-    closePopup(newOpenPopup);
+    closePopup(popup);
   }
 };
 
-// Закрытие popups по оверлею и крестику
+// Закрытие popup по оверлею и крестику
 popups.forEach((popup) => {
   popup.addEventListener('mousedown', (e) => {
     if (e.target.classList.contains('popup_opened')) {
