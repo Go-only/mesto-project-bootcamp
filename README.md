@@ -12,6 +12,7 @@
 
 * HTML
 * CSS
+* JS
 * Адаптивная верстка
 * Использование Flexbox, grid
 * Методология Nested BEM
