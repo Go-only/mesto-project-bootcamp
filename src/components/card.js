@@ -1,5 +1,5 @@
 import { bigImg, cardTemplateElement, nameImg, popupTypeImg } from "./constants.js";
-import { openPopup } from "./utils.js";
+import { openPopup } from "./modal.js";
 
 export function renderCard(nameElement, linkElement, containerNode) {
   const newCard = createCard(nameElement, linkElement);

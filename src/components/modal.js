@@ -1,5 +1,16 @@
 import { popups } from "./constants.js";
-import { closePopup } from "./utils.js";
+
+// Открытие popup
+export function openPopup(popup) {
+  popup.classList.add("popup_opened");
+  document.addEventListener('keydown', closeByEsc);
+};
+
+// Закрытие popup
+export function closePopup(popup) {
+  popup.classList.remove("popup_opened");
+  document.removeEventListener('keydown', closeByEsc);
+};
 
 // Закрытие popup по Esc
 export function closeByEsc(e) {

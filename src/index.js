@@ -1,6 +1,6 @@
 import './pages/index.css';
 import { renderCard } from "./components/card.js";
-import { openPopup, closePopup } from "./components/utils.js";
+import { openPopup, closePopup } from "./components/modal.js";
 import { buttonCardAdd, buttonProfileEdit, cardList, formFormAdd, formFormProfile, initialCards, inputBio, inputLink, inputMesto, inputName, popupTypeAdd, popupTypeEdit, profileBio, profileName } from './components/constants.js';
 import { configForm, enableValidation } from './components/validate.js';
 
