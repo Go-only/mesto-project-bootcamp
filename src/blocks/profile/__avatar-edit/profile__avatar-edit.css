@@ -1,0 +1,43 @@
+.profile__avatar-edit {
+  background-color: transparent;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+}
+
+.profile__avatar-edit::before {
+  content: "";
+  background-color: rgba(0, 0, 0, .8);
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  display: block;
+  height: 120px;
+  width: 120px;
+  position: absolute;
+  opacity: 0;
+  transition: opacity .3s ease-in-out;
+}
+
+.profile__avatar-edit::after {
+  content: "";
+  background: url(../../../images/edit-profile.svg);
+  background-color: transparent;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: block;
+  width: 26px;
+  height: 26px;
+  position: absolute;
+  left: 50px;
+  top: 50px;
+  opacity: 0;
+  transition: opacity .3s ease-in-out;
+}
+
+.profile__avatar-edit:hover:after,
+.profile__avatar-edit:hover:before {
+  opacity: 1;
+}

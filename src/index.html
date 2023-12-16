@@ -21,7 +21,9 @@
       <section class="profile">
 
         <div class="profile__info">
-          <img src="<%=require('./images/avatar.jpg')%>" alt="Аватар" class="profile__avatar">
+          <button class="profile__avatar-edit" type="button" aria-label="Кнопка редактирования аватара">
+            <img src="" alt="Аватар" class="profile__avatar">
+          </button>
           <div class="profile__text">
             <h1 class="profile__name"></h1>
             <button class="profile__edit" type="button" aria-label="Кнопка редактирования профиля"></button>
@@ -92,6 +94,21 @@
     </div>
   </div>
 
+  <div class="popup popup_type_avatar">
+    <div class="popup__container">
+      <form class="form" name="formAvatar" novalidate>
+        <p class="form__title">Обновить аватар</p>
+        <input class="form__item form__item_input_link" type="url" value="" name="link" placeholder="Ссылка на картинку"
+          required>
+        <span id="link-error" class="error"></span>
+        <button class="form__button" type="submit"
+          aria-label="Кнопка сохранения нового аватара профиля">Сохранить</button>
+      </form>
+      <button class="popup__close" type="button"
+        aria-label="Кнопка закрытия всплывающей формы редактирования аватара профиля"></button>
+    </div>
+  </div>
+
   <template class="card-template">
     <li class="template-element">
       <article class="card">
@@ -101,8 +118,10 @@
         <div class="card__content">
 
           <h2 class="card__name"></h2>
-          <button type="button" class="card__heart"></button>
-
+          <div class="card__container-likes">
+            <button type="button" class="card__heart"></button>
+            <span class="card__likes">0</span>
+          </div>
         </div>
       </article>
     </li>

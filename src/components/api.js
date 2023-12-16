@@ -53,3 +53,27 @@ export function editProfile(newDataProfile) {
     body: JSON.stringify(newDataProfile),
   });
 }
+
+// Редактирование аватара профиля
+export function editAvatarProfile(newAvatarProfile) {
+  return request('users/me/avatar', {
+    method: "PATCH",
+    body: JSON.stringify({ avatar: newAvatarProfile }),
+  });
+}
+
+// Лайк карточки
+export function likeCard(idCard) {
+  return request(`cards/likes/${idCard}`, {
+    method: "PUT",
+    body: JSON.stringify({ _id: idCard }),
+  });
+}
+
+// Удаление лайка карточки
+export function deleteLikeCard(idCard) {
+  return request(`cards/likes/${idCard}`, {
+    method: "DELETE",
+    body: JSON.stringify({ _id: idCard }),
+  });
+}
