@@ -1,30 +1,3 @@
-export const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
-
 export const cardList = document.querySelector(".cards__list");
 export const cardTemplateElement = document.querySelector(".card-template");
 
@@ -35,6 +8,7 @@ export const popupTypeAdd = document.querySelector(".popup_type_add");
 export const popupTypeImg = document.querySelector(".popup_type_img");
 export const profileName = document.querySelector(".profile__name");
 export const profileBio = document.querySelector(".profile__bio");
+export const profileAvatar = document.querySelector(".profile__avatar");
 export const bigImg = document.querySelector(".popup__big-img");
 export const nameImg = document.querySelector(".popup__name-img");
 
