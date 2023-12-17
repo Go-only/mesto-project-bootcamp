@@ -17,3 +17,4 @@
 * Использование Flexbox, grid
 * Методология Nested BEM
 * Webpack
+* Api
