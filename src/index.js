@@ -1,6 +1,6 @@
 import './pages/index.css';
 import { renderCard } from "./components/card.js";
-import { openPopup, closePopup } from "./components/modal.js";
+import { openPopup, closePopup, renderLoading } from "./components/modal.js";
 import { buttonAvatarEdit, buttonCardAdd, buttonProfileEdit, cardList, formFormAdd, formFormAvatar, formFormProfile, inputAvatarLink, inputBio, inputLink, inputMesto, inputName, popupTypeAdd, popupTypeAvatar, popupTypeEdit, profileAvatar, profileBio, profileName } from './components/constants.js';
 import { configForm, enableValidation } from './components/validate.js';
 import { addCard, editAvatarProfile, editProfile, getAllCards, getInfoProfile } from './components/api.js';
@@ -8,13 +8,15 @@ import { addCard, editAvatarProfile, editProfile, getAllCards, getInfoProfile } 
 export let myId;
 
 //Рендеринг карточек c сервера
-getAllCards()
-  .then((resultCards) => {
-    resultCards.forEach((card) => {
-      renderCard(card, cardList);
-    });
-  })
-  .catch((err) => console.error("error", err));
+let getCardsFunc = () => {
+  getAllCards()
+    .then((resultCards) => {
+      resultCards.forEach((card) => {
+        renderCard(card, cardList);
+      });
+    })
+    .catch((err) => console.error("error", err));
+}
 
 //Рендеринг информации профиля c сервера
 getInfoProfile()
@@ -23,6 +25,7 @@ getInfoProfile()
     profileBio.textContent = resultProfile.about;
     profileAvatar.src = resultProfile.avatar;
     myId = resultProfile._id;
+    getCardsFunc()
   })
   .catch((err) => console.error("error", err));
 
@@ -43,6 +46,7 @@ buttonCardAdd.addEventListener('click', () => openPopup(popupTypeAdd));
 // Функция редактирования профиля
 export function handleFormProfileSubmit(e) {
   e.preventDefault();
+  renderLoading(e, true)
 
   const inputNameValue = inputName.value;
   const inputBioValue = inputBio.value;
@@ -60,13 +64,15 @@ export function handleFormProfileSubmit(e) {
       profileName.textContent = updateDataProfile.name;
       profileBio.textContent = updateDataProfile.about;
     })
-    .catch((err) => console.error("error", err));
+    .catch((err) => console.error("error", err))
+    .finally(() => renderLoading(e, false));
   closePopup(popupTypeEdit);
 };
 
 // Функция редактирования аватара профиля
 export function handleFormAvatarSubmit(e) {
   e.preventDefault();
+  renderLoading(e, true)
   const inputAvatarLinkValue = inputAvatarLink.value;
   console.log(inputAvatarLinkValue);
 
@@ -74,7 +80,8 @@ export function handleFormAvatarSubmit(e) {
     .then(() => {
       profileAvatar.src = inputAvatarLinkValue;
     })
-    .catch((err) => console.error("error", err));
+    .catch((err) => console.error("error", err))
+    .finally(() => renderLoading(e, false));
   closePopup(popupTypeAvatar);
   e.target.reset();
 };
@@ -82,6 +89,7 @@ export function handleFormAvatarSubmit(e) {
 // Функция добавления карточки
 export function handleFormAddSubmit(e) {
   e.preventDefault();
+  renderLoading(e, true)
   const inputMestoValue = inputMesto.value;
   const inputLinkValue = inputLink.value;
   const newDataCard = {
@@ -90,7 +98,8 @@ export function handleFormAddSubmit(e) {
   }
   addCard(newDataCard)
     .then((newDataCard) => renderCard(newDataCard, cardList, 'prepend'))
-    .catch((err) => console.error("error", err));
+    .catch((err) => console.error("error", err))
+    .finally(() => renderLoading(e, false));
   closePopup(popupTypeAdd);
   e.target.reset();
 };

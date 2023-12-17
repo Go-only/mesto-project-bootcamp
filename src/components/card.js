@@ -27,7 +27,6 @@ function createCard(card) {
   const cardHeart = templateElement.querySelector(".card__heart");
   const cardLikes = templateElement.querySelector(".card__likes");
   let likeElement = card.likes;
-  console.log(cardLikes);
   if (card.owner._id !== myId) {
     cardTrash.remove();
   }
@@ -56,22 +55,21 @@ function createCard(card) {
     if (!cardHeart.classList.contains('card__heart_active')) {
       likeCard(card._id)
         .then((result) => {
-          console.log(result.likes.length);
           cardLikes.textContent = result.likes.length;
           e.target.classList.add('card__heart_active');
         })
         .catch((err) => console.error("error", err))
     } else {
       deleteLikeCard(card._id)
-        .then(() => {
-          console.log(result.likes.length);
+        .then((result) => {
           e.target.classList.remove('card__heart_active');
           cardLikes.textContent = result.likes.length;
         })
         .catch((err) => console.error("error", err))
     }
-    e.target.classList.toggle('card__heart_active');
   });
+
+  cardLikes.textContent = likeElement.length;
 
   cardTrash.addEventListener('click', () => {
     deleteCard(card._id)
