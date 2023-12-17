@@ -1,33 +1,31 @@
 import './pages/index.css';
 import { renderCard } from "./components/card.js";
-import { openPopup, closePopup, renderLoading } from "./components/modal.js";
-import { buttonAvatarEdit, buttonCardAdd, buttonProfileEdit, cardList, formFormAdd, formFormAvatar, formFormProfile, inputAvatarLink, inputBio, inputLink, inputMesto, inputName, popupTypeAdd, popupTypeAvatar, popupTypeEdit, profileAvatar, profileBio, profileName } from './components/constants.js';
+import { openPopup, closePopup } from "./components/modal.js";
+import { buttonAvatarEdit, buttonCardAdd, buttonProfileEdit, cardList, formFormAdd, formFormAvatar, formFormProfile, inputAvatarLink, inputBio, inputLink, inputMesto, inputName, popupTypeAdd, popupTypeAvatar, popupTypeEdit, popups, profileAvatar, profileBio, profileName } from './components/constants.js';
 import { configForm, enableValidation } from './components/validate.js';
 import { addCard, editAvatarProfile, editProfile, getAllCards, getInfoProfile } from './components/api.js';
+import { handleSubmit } from './components/utils.js';
 
 export let myId;
 
-//Рендеринг карточек c сервера
-let getCardsFunc = () => {
-  getAllCards()
-    .then((resultCards) => {
-      resultCards.forEach((card) => {
-        renderCard(card, cardList);
-      });
-    })
-    .catch((err) => console.error("error", err));
-}
+// Рендеринг информации профиля c сервера
+const profilePromise = getInfoProfile();
 
-//Рендеринг информации профиля c сервера
-getInfoProfile()
-  .then((resultProfile) => {
+// Рендеринг карточек c сервера
+const cardsPromise = getAllCards();
+
+Promise.all([profilePromise, cardsPromise])
+  .then(([resultProfile, resultCards]) => {
     profileName.textContent = resultProfile.name;
     profileBio.textContent = resultProfile.about;
     profileAvatar.src = resultProfile.avatar;
     myId = resultProfile._id;
-    getCardsFunc()
+
+    resultCards.forEach((card) => {
+      renderCard(card, cardList);
+    });
   })
-  .catch((err) => console.error("error", err));
+  .catch(console.error);
 
 
 // Обработчик клика по кнопке открытия popup для редактирования профиля
@@ -43,66 +41,67 @@ buttonAvatarEdit.addEventListener('click', () => openPopup(popupTypeAvatar));
 // Обработчик клика по кнопке открытия popup для добавления карточки
 buttonCardAdd.addEventListener('click', () => openPopup(popupTypeAdd));
 
+// Закрытие popup по оверлею и крестику
+popups.forEach((popup) => {
+  popup.addEventListener('mousedown', (e) => {
+    if (e.target.classList.contains('popup_opened')) {
+      closePopup(popup)
+    }
+    if (e.target.classList.contains('popup__close')) {
+      closePopup(popup)
+    }
+  });
+});
+
 // Функция редактирования профиля
 export function handleFormProfileSubmit(e) {
-  e.preventDefault();
-  renderLoading(e, true)
-
-  const inputNameValue = inputName.value;
-  const inputBioValue = inputBio.value;
-
-  profileName.textContent = inputNameValue;
-  profileBio.textContent = inputBioValue;
-
-  const newDataProfile = {
-    name: inputNameValue,
-    about: inputBioValue
-  };
-
-  editProfile(newDataProfile)
-    .then((updateDataProfile) => {
-      profileName.textContent = updateDataProfile.name;
-      profileBio.textContent = updateDataProfile.about;
+  // создаем функцию, которая возвращает промис, так как любой запрос возвращает его
+  function makeRequest() {
+    // return позволяет потом дальше продолжать цепочку `then, catch, finally`
+    return editProfile({
+      name: inputName.value,
+      about: inputBio.value
     })
-    .catch((err) => console.error("error", err))
-    .finally(() => renderLoading(e, false));
-  closePopup(popupTypeEdit);
-};
+      .then((userData) => {
+        profileName.textContent = userData.name;
+        profileBio.textContent = userData.about;
+        closePopup(popupTypeEdit);
+      })
+      .catch(console.error)
+  }
+  // вызываем универсальную функцию, передавая в нее запрос, событие и текст изменения кнопки (если нужен другой, а не `"Сохранение..."`)
+  handleSubmit(makeRequest, e);
+}
+
 
 // Функция редактирования аватара профиля
 export function handleFormAvatarSubmit(e) {
-  e.preventDefault();
-  renderLoading(e, true)
-  const inputAvatarLinkValue = inputAvatarLink.value;
-  console.log(inputAvatarLinkValue);
-
-  editAvatarProfile(inputAvatarLinkValue)
-    .then(() => {
-      profileAvatar.src = inputAvatarLinkValue;
-    })
-    .catch((err) => console.error("error", err))
-    .finally(() => renderLoading(e, false));
-  closePopup(popupTypeAvatar);
-  e.target.reset();
-};
+  function makeRequest() {
+    return editAvatarProfile(inputAvatarLink.value)
+      .then(() => {
+        profileAvatar.src = inputAvatarLink.value;
+        closePopup(popupTypeAvatar);
+      })
+      .catch(console.error)
+  }
+  handleSubmit(makeRequest, e);
+}
 
 // Функция добавления карточки
 export function handleFormAddSubmit(e) {
-  e.preventDefault();
-  renderLoading(e, true)
-  const inputMestoValue = inputMesto.value;
-  const inputLinkValue = inputLink.value;
-  const newDataCard = {
-    name: inputMestoValue,
-    link: inputLinkValue,
+  function makeRequest() {
+    return addCard({
+      name: inputMesto.value,
+      link: inputLink.value
+    })
+      .then((newDataCard) => {
+        renderCard(newDataCard, cardList, 'prepend')
+        closePopup(popupTypeAdd);
+      })
+      .catch(console.error)
   }
-  addCard(newDataCard)
-    .then((newDataCard) => renderCard(newDataCard, cardList, 'prepend'))
-    .catch((err) => console.error("error", err))
-    .finally(() => renderLoading(e, false));
-  closePopup(popupTypeAdd);
-  e.target.reset();
-};
+  handleSubmit(makeRequest, e);
+}
 
 //Валидация форм
 enableValidation(configForm);

@@ -26,7 +26,7 @@ function createCard(card) {
   const cardTrash = templateElement.querySelector(".card__trash");
   const cardHeart = templateElement.querySelector(".card__heart");
   const cardLikes = templateElement.querySelector(".card__likes");
-  let likeElement = card.likes;
+  const likes = card.likes;
   if (card.owner._id !== myId) {
     cardTrash.remove();
   }
@@ -42,12 +42,12 @@ function createCard(card) {
     openPopup(popupTypeImg);
   });
 
-  if (likeElement.length !== 0) {
-    for (let i = 0; i < likeElement.length; i++) {
-      if (likeElement[i]._id === myId) {
+  if (likes.length !== 0) {
+    likes.forEach(like => {
+      if (like._id === myId) {
         cardHeart.classList.add('card__heart_active');
       }
-    }
+    });
   }
 
   cardHeart.addEventListener('click', function (e) {
@@ -65,17 +65,18 @@ function createCard(card) {
           e.target.classList.remove('card__heart_active');
           cardLikes.textContent = result.likes.length;
         })
-        .catch((err) => console.error("error", err))
+        .catch(console.error);
     }
   });
 
-  cardLikes.textContent = likeElement.length;
+  cardLikes.textContent = likes.length;
 
   cardTrash.addEventListener('click', () => {
     deleteCard(card._id)
-      .then()
-      .catch((err) => console.error("error", err));
-    cardElement.remove();
+      .then(() => {
+        cardElement.remove();
+      })
+      .catch(console.error);
   });
 
   return cardElement;
