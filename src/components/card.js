@@ -1,7 +1,9 @@
 import { myId } from "../index.js";
 import { deleteCard, deleteLikeCard, likeCard } from "./api.js";
-import { bigImg, cardTemplateElement, nameImg, popupTypeImg } from "./constants.js";
-import { openPopup } from "./modal.js";
+import { bigImg, buttonFormDeleteCard, cardTemplateElement, formFormDeleteCard, nameImg, popupTypeImg } from "./constants.js";
+import { closePopup, openPopup } from "./modal.js";
+import { handleSubmit } from "./utils.js";
+import { configForm, showButton } from "./validate.js";
 
 export function renderCard(card, containerNode, position = 'append') {
   const newCard = createCard(card);
@@ -26,6 +28,7 @@ function createCard(card) {
   const cardTrash = templateElement.querySelector(".card__trash");
   const cardHeart = templateElement.querySelector(".card__heart");
   const cardLikes = templateElement.querySelector(".card__likes");
+  const popupTypeDeleteCard = document.querySelector(".popup_type_delete-card");
   const likes = card.likes;
   if (card.owner._id !== myId) {
     cardTrash.remove();
@@ -72,12 +75,50 @@ function createCard(card) {
   cardLikes.textContent = likes.length;
 
   cardTrash.addEventListener('click', () => {
+    openPopup(popupTypeDeleteCard);
+
+    formFormDeleteCard.addEventListener('submit', (e) => {
+      handleFormDeleteCardSubmit(e, card);
+    });
+  });
+
+
+  // Функция прелоадер
+  function renderLoading(evt, isLoading) {
+    const formEvent = evt.submitter;
+    if (isLoading) {
+      formEvent.textContent = 'Удаление...';
+    } else {
+      formEvent.textContent = 'Да';
+    }
+  }
+
+  // Функция удаления карточки
+  function handleFormDeleteCardSubmit(e, card) {
+    e.preventDefault();
+    renderLoading(e, true)
+
     deleteCard(card._id)
       .then(() => {
         cardElement.remove();
+        closePopup(popupTypeDeleteCard);
       })
-      .catch(console.error);
-  });
+      .catch(console.error)
+      .finally(() => renderLoading(e, false));
+  }
+
+  /*   // Функция удаления карточки
+    function handleFormDeleteCardSubmit(e, card) {
+      function makeRequest() {
+        return deleteCard(card._id)
+          .then(() => {
+            cardElement.remove();
+            closePopup(popupTypeDeleteCard);
+          });
+      }
+      handleSubmit(makeRequest, e, "Удаление...");
+      showButton(buttonFormDeleteCard, configForm);
+    } */
 
   return cardElement;
 

@@ -109,6 +109,18 @@
     </div>
   </div>
 
+  <div class="popup popup_type_delete-card">
+    <div class="popup__container">
+      <form class="form" name="formDeleteCard" novalidate>
+        <p class="form__title">Вы уверены?</p>
+        <span id="link-error" class="error"></span>
+        <button class="form__button" type="submit" aria-label="Кнопка подтверждения удаления карточки">Да</button>
+      </form>
+      <button class="popup__close" type="button"
+        aria-label="Кнопка закрытия всплывающей формы подтверждения удаления карточки"></button>
+    </div>
+  </div>
+
   <template class="card-template">
     <li class="template-element">
       <article class="card">

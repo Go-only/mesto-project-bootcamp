@@ -2,7 +2,7 @@ import './pages/index.css';
 import { renderCard } from "./components/card.js";
 import { openPopup, closePopup } from "./components/modal.js";
 import { buttonAvatarEdit, buttonCardAdd, buttonProfileEdit, cardList, formFormAdd, formFormAvatar, formFormProfile, inputAvatarLink, inputBio, inputLink, inputMesto, inputName, popupTypeAdd, popupTypeAvatar, popupTypeEdit, popups, profileAvatar, profileBio, profileName } from './components/constants.js';
-import { configForm, enableValidation } from './components/validate.js';
+import { configForm, enableValidation, hideInputAllError } from './components/validate.js';
 import { addCard, editAvatarProfile, editProfile, getAllCards, getInfoProfile } from './components/api.js';
 import { handleSubmit } from './components/utils.js';
 
@@ -30,6 +30,7 @@ Promise.all([profilePromise, cardsPromise])
 
 // Обработчик клика по кнопке открытия popup для редактирования профиля
 buttonProfileEdit.addEventListener('click', function () {
+  hideInputAllError(formFormProfile, configForm);
   inputName.value = profileName.textContent;
   inputBio.value = profileBio.textContent;
   openPopup(popupTypeEdit);
@@ -40,6 +41,7 @@ buttonAvatarEdit.addEventListener('click', () => openPopup(popupTypeAvatar));
 
 // Обработчик клика по кнопке открытия popup для добавления карточки
 buttonCardAdd.addEventListener('click', () => openPopup(popupTypeAdd));
+
 
 // Закрытие popup по оверлею и крестику
 popups.forEach((popup) => {

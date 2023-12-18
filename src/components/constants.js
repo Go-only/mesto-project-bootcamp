@@ -25,4 +25,7 @@ export const inputLink = formFormAdd.querySelector(".form__item_input_link");
 export const formFormAvatar = document.forms["formAvatar"]
 export const inputAvatarLink = formFormAvatar.querySelector(".form__item_input_link");
 
+export const formFormDeleteCard = document.forms["formDeleteCard"]
+export const buttonFormDeleteCard = formFormDeleteCard.querySelector(".form__button");
+
 export const popups = document.querySelectorAll('.popup')

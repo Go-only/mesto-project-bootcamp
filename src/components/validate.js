@@ -27,11 +27,16 @@ function disableButton(buttonElement, config) {
   buttonElement.disabled = "disabled";
 }
 
+// Функция разблокировки кнопки
+export function showButton(buttonElement, config) {
+  buttonElement.disabled = false;
+  buttonElement.classList.remove(config.inactiveButtonClass);
+}
+
 // Функция блокировки кнопки в зависимости от валидности инпутов
 function toggleButtonState(buttonElement, isActive, config) {
   if (isActive) {
-    buttonElement.disabled = false;
-    buttonElement.classList.remove(config.inactiveButtonClass);
+    showButton(buttonElement, config);
   } else {
     disableButton(buttonElement, config);
   }
@@ -75,10 +80,19 @@ export function enableValidation(config) {
   });
 }
 
+// Функция сброса ошибок
+export function hideInputAllError(formElement, configForm) {
+  const inputList = formElement.querySelectorAll(configForm.inputSelector);
+  const errorList = formElement.querySelectorAll(configForm.errorSelector);
+  inputList.forEach((inputElement) => inputElement.classList.remove(configForm.inputErrorClass));
+  errorList.forEach((errorElement) => (errorElement.textContent = ''));
+}
+
 export const configForm = {
   formSelector: ".form",
   inputSelector: ".form__item",
   submitButtonSelector: ".form__button",
   inactiveButtonClass: "form__button_invalid",
   inputErrorClass: "form__item_status_invalid",
+  errorSelector: ".error",
 };
