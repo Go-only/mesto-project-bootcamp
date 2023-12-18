@@ -66,8 +66,7 @@ export function handleFormProfileSubmit(e) {
         profileName.textContent = userData.name;
         profileBio.textContent = userData.about;
         closePopup(popupTypeEdit);
-      })
-      .catch(console.error)
+      });
   }
   // вызываем универсальную функцию, передавая в нее запрос, событие и текст изменения кнопки (если нужен другой, а не `"Сохранение..."`)
   handleSubmit(makeRequest, e);
@@ -81,8 +80,7 @@ export function handleFormAvatarSubmit(e) {
       .then(() => {
         profileAvatar.src = inputAvatarLink.value;
         closePopup(popupTypeAvatar);
-      })
-      .catch(console.error)
+      });
   }
   handleSubmit(makeRequest, e);
 }
@@ -97,8 +95,7 @@ export function handleFormAddSubmit(e) {
       .then((newDataCard) => {
         renderCard(newDataCard, cardList, 'prepend')
         closePopup(popupTypeAdd);
-      })
-      .catch(console.error)
+      });
   }
   handleSubmit(makeRequest, e);
 }
